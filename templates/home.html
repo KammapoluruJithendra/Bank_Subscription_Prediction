@@ -1,0 +1,199 @@
+<html>
+<head>
+   <title>Bank Subscription</title>
+   <style>
+      .login{
+         color:white;
+         background:green;
+         padding-top:20px;
+         padding-bottom:20px;
+         margin-left:200px;
+         margin-right:200px;
+         text-align:center;
+         border-radius:25px;
+      }
+      .age{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .job{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .marital{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .education{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .default{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .balance{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .loan{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .housing{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:20px;
+         text-align:center;
+      }
+      .duration{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:15px;
+         text-align:center;
+      }
+      .campaign{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:15px;
+         text-align:center;
+      }
+      .pdays{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:16px;
+         text-align:center;
+      }
+      .previous{
+         margin:10px;
+         width:300px;
+         height:35px;
+         border-radius:20px;
+         font-size:16px;
+         text-align:center;
+      }
+      .poutcome{
+         margin:10px;
+         width:300px;
+         height:35px;
+         font-size:15px;
+         border-radius:20px;
+         text-align:center;
+      }
+      .btn{
+         margin:10px;
+         width:300px;
+         height:35px;
+         background:blue;
+         color:white;
+         font-size:20px;
+         font-weight:bold;
+         border-radius:10px;
+      }
+   </style>
+</head>
+<body class="background">
+    <div class="login">
+       <h1>Bank Subscription Prediction</h1>
+   
+        <!-- Main Input For Receiving Query to our ML -->
+       <form action="{{ url_for('predict')}}" method="post">
+           <input type="number" name="age" class="age" placeholder="Age" required="required"/><br>
+           <select name="job" class="job" required>
+            <option value="" disabled selected> -- Select Job Type -- </option>
+            <option value="0">Admin</option>
+            <option value="2">Unemployed</option>
+            <option value="3">Management</option>
+            <option value="4">Housemaid</option>
+            <option value="5">Entrepreneur</option>
+            <option value="6">Student</option>
+            <option value="7">Blue-collar</option>
+            <option value="8">Self-employed</option>
+            <option value="9">Retired</option>
+            <option value="10">Technician</option>
+            <option value="11">Services</option>
+            <option value="1">Unknown</option>
+           </select><br>
+           <select name="marital" class="marital" required>
+            <option value="" disabled selected> -- Select Martial Status -- </option>
+            <option value="0">Married</option>
+            <option value="1">Divorced</option>
+            <option value="2">Single</option>
+           </select><br>
+           <select name="education" class="education" required>
+            <option value="" disabled selected> -- Education Details -- </option>
+            <option value="1">Primary</option>
+            <option value="2">Secondary</option>
+            <option value="3">Tertiary</option>
+            <option value="0">Unknown</option>
+           </select><br>
+           <select name="default" class="default" required>
+            <option value="" disabled selected> -- Credit in default -- </option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+           </select><br>
+           <input type="number" name="balance" class="balance" placeholder="Balance" required="required" /><br>
+           <select name="housing" class="housing" required>
+            <option value="" disabled selected> -- Housing Loan -- </option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+           </select><br>
+           <select name="loan" class="loan" required>
+            <option value="" disabled selected> -- Personal Loan -- </option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+           </select><br>
+           <input type="number" name="duration" class="duration" placeholder="Contact Duration in Seconds" required="required" /><br>
+           <input type="number" name="campaign" class="campaign" placeholder="No of contacts performed in Campaign" required="required" /><br>
+           <input type="number" name="pdays" class="pdays" placeholder="No of days Last Contacted " required="required" /><br>
+           <input type="number" name="previous" class="previous" placeholder="No of Contacts Before Campaign" required="required" /><br>
+           <select name="poutcome" class="poutcome" required>
+            <option value="" disabled selected> -- Outcome For Previous Campaign -- </option>
+            <option value="3">success</option>
+            <option value="2">failure</option>
+            <option value="1">other</option>
+            <option value="0">unknown</option>
+           </select><br>
+           <button type="submit" class="btn">Predict</button>
+       </form>
+    <h2>
+       The Bank Subscription prediction is : {{result}}
+    </h2>
+   <body>
+</html>
